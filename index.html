@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amira Acessórios - Bijuterias e folheados que inspiram beleza e estilo">
+    <meta name="keywords" content="bijuterias, acessórios, folheados, jóias, feminino">
+    <title>Amira Acessórios - Loja Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d4af37;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+            --beige: #e8dcc8;
+            --gray: #f5f5f0;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        /* Header e Navegação */
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--primary);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--beige);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.3rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .cart-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: left;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--beige);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background-color: var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Seção de Destaques */
+        .highlights {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .product-price-pix {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .product-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* Seção Sobre */
+        .about {
+            padding: 4rem 0;
+            background-color: var(--gray);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            letter-spacing: 0.5px;
+        }
+
+        .about-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Testimoniais */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--beige);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stars {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            color: var(--light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            color: var(--beige);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--beige);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--beige);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--dark);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            background-color: var(--beige);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--beige);
+            font-size: 0.85rem;
+        }
+
+        /* WhatsApp Flutuante */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-button img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .whatsapp-button {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                AMIRA
+                <div class="logo-subtitle">Acessórios</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">🛒</div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Elegância Pura</h1>
+                <p>Bijuterias que expressam quem você é.</p>
+                <a href="#produtos" class="btn">Explorar Coleção</a>
+            </div>
+            <div class="hero-image">
+                <img src="002.webp" alt="Bijuterias Amira Acessórios">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Destaques -->
+    <section id="produtos" class="highlights">
+        <div class="container">
+            <h2 class="section-title">Destaques da Coleção</h2>
+            <p class="section-subtitle">Bijuterias elegantes e sofisticadas para todos os momentos</p>
+            
+            <div class="products-grid">
+                <!-- Produto 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="003.webp" alt="Brinco Elegante">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Brinco Elegante</div>
+                        <div class="product-description">Brinco minimalista em prata com design sofisticado. Perfeito para complementar qualquer look.</div>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-price-pix">R$ 47,40 com Pix</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Comprar</a>
+                            <a href="https://wa.me/5548996377111?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Brinco%20Elegante" class="btn btn-secondary">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="004.webp" alt="Colar Delicado">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Colar Delicado</div>
+                        <div class="product-description">Colar com corrente fina e pingente em formato de coração. Ideal para expressar sentimentos.</div>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-price-pix">R$ 47,40 com Pix</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Comprar</a>
+                            <a href="https://wa.me/5548996377111?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Colar%20Delicado" class="btn btn-secondary">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="005.webp" alt="Pulseira Clássica">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Pulseira Clássica</div>
+                        <div class="product-description">Pulseira dourada com corrente fina e ajustável. Um acessório versátil para qualquer ocasião.</div>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-price-pix">R$ 47,40 com Pix</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Comprar</a>
+                            <a href="https://wa.me/5548996377111?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Pulseira%20Clássica" class="btn btn-secondary">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="006.webp" alt="Anel Sofisticado">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Anel Sofisticado</div>
+                        <div class="product-description">Anel com design moderno e acabamento polido. Perfeito para quem busca elegância no dia a dia.</div>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-price-pix">R$ 47,40 com Pix</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Comprar</a>
+                            <a href="https://wa.me/5548996377111?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Anel%20Sofisticado" class="btn btn-secondary">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="007.webp" alt="Corrente Dupla">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Corrente Dupla</div>
+                        <div class="product-description">Corrente dupla em prata com design contemporâneo. Ideal para quem ama acessórios com qualidade.</div>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-price-pix">R$ 47,40 com Pix</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Comprar</a>
+                            <a href="https://wa.me/5548996377111?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Corrente%20Dupla" class="btn btn-secondary">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="008.webp" alt="Tornozeleira Delicada">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Tornozeleira Delicada</div>
+                        <div class="product-description">Tornozeleira com corrente fina e detalhes em ouro. Um toque especial para completar seu look.</div>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-price-pix">R$ 47,40 com Pix</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Comprar</a>
+                            <a href="https://wa.me/5548996377111?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Tornozeleira%20Delicada" class="btn btn-secondary">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="009.webp" alt="Sobre Amira Acessórios">
+                </div>
+                <div class="about-content">
+                    <h2>Sobre Nós</h2>
+                    <p>Bijuterias cuidadosamente selecionadas para expressar sua personalidade e estilo.</p>
+                    <p>Cada peça é escolhida com dedicação à qualidade e elegância. Acreditamos que os acessórios têm o poder de transformar e marcar momentos especiais, além de aumentar a autoestima das pessoas.</p>
+                    <p>Nossa missão é valorizar a beleza real através de bijuterias e folheados cuidadosamente escolhidos. Tudo com a praticidade de comprar online com segurança.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoniais -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O que Dizem Sobre Nós</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Adorei a qualidade dos acessórios! Chegou rápido e bem embalado."</p>
+                    <p class="testimonial-author">Maria Silva</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Perfeito! Exatamente como esperava. Recomendo muito!"</p>
+                    <p class="testimonial-author">Ana Costa</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Lindos acessórios, preços acessíveis e atendimento excelente."</p>
+                    <p class="testimonial-author">Juliana Santos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Receba Nossas Ofertas</h2>
+            <p>Cadastre-se e receba nossas novidades e descontos exclusivos</p>
+            <form class="newsletter-form" action="#" method="POST">
+                <input type="email" placeholder="Seu email" required>
+                <button type="submit">Inscrever</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Amira Acessórios</h3>
+                    <p>Bijuterias e folheados que inspiram beleza e estilo.</p>
+                    <div class="social-links">
+                        <!-- PLACEHOLDER: Substitua os links abaixo pelos seus -->
+                        <a href="https://instagram.com" title="Instagram">📷</a>
+                        <a href="https://facebook.com" title="Facebook">f</a>
+                        <a href="https://wa.me/5548996377111" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="https://wa.me/5548996377111">WhatsApp: 48 99637711</a></li>
+                        <li><a href="mailto:contato@amiraacessorios.com">Email: contato@amiraacessorios.com</a></li>
+                        <li>Seg-Sex: 09h-18h</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Informações</h3>
+                    <ul>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Serviço</a></li>
+                        <li><a href="#">Garantia de Produtos</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Amira Acessórios. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/5548996377111?text=Olá%20Amira%20Acessórios!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20produtos." class="whatsapp-button" title="Fale conosco no WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // PLACEHOLDER: Adicione aqui o código para integrar Mercado Pago
+        // Exemplo: document.querySelectorAll('.btn')[0].addEventListener('click', function() { /* código do Mercado Pago */ });
+    </script>
+</body>
+</html>
